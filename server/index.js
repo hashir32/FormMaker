@@ -20,12 +20,12 @@ mongoose.connect(process.env.MONGO_URI, {
 }).catch((err) => {
   console.error('❌ MongoDB connection error:', err);
 });
-
-app.use('/api/forms', require('./routes/formRoutes'));
-app.use('/api/submissions', require('./routes/submissionRoutes'));
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hello from the backend 👋');
 });
+app.use('/api/forms', require('./routes/formRoutes'));
+app.use('/api/submissions', require('./routes/submissionRoutes'));
+
 
 // Start the server
 const PORT = process.env.PORT || 5000;
