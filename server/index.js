@@ -21,7 +21,8 @@ mongoose.connect(process.env.MONGO_URI, {
   console.error('❌ MongoDB connection error:', err);
 });
 
-// Simple test route
+app.use('/api/forms', require('./routes/formRoutes'));
+app.use('/api/submissions', require('./routes/submissionRoutes'));
 app.get('/', (req, res) => {
   res.send('Hello from the backend 👋');
 });
