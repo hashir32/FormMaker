@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 app.use('/api/forms', require('./routes/formRoutes'));
 app.use('/api/submissions', require('./routes/submissionRoutes'));
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hello from the backend 👋');
 });
 
