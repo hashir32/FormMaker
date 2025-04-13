@@ -52,17 +52,28 @@ function SurveyComponent() {
         const survey = new Model(json);
         survey.onComplete.add(sender => {
           const responses = sender.data;
+          
+          // Iterate through each question to submit responses for each metric
           questions.forEach((q, idx) => {
             const body = {
-              rating1: responses[`q${idx}_metric1`],
-              rating2: responses[`q${idx}_metric2`],
-              rating3: responses[`q${idx}_metric3`]
+              rating_1: responses[`q${idx}_metric1`],
+              rating_2: responses[`q${idx}_metric2`],
+              rating_3: responses[`q${idx}_metric3`]
             };
+
+            // Send the ratings to the backend for each question
             fetch(`${VERCEL_API_BASE}/rate-question/${q._id}`, {
               method: "PATCH",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(body)
-            });
+            })
+              .then(res => res.json())
+              .then(data => {
+                console.log("Ratings successfully updated:", data);
+              })
+              .catch(err => {
+                console.error("Error updating ratings:", err);
+              });
           });
         });
 
