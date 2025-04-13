@@ -20,21 +20,27 @@ function SurveyComponent() {
 
         const elements = questions.flatMap((q, idx) => [
           {
+            type: "html",
+            name: `q${idx}_questionText`,
+            title: q.questionText,  // Display the question text
+            html: `<strong>${q.questionText}</strong>`
+          },
+          {
             type: "rating",
             name: `q${idx}_metric1`,
-            title: q.questionText + " (Metric 1)",
+            title: `Metric 1`,
             rateCount: 10
           },
           {
             type: "rating",
             name: `q${idx}_metric2`,
-            title: q.questionText + " (Metric 2)",
+            title: `Metric 2`,
             rateCount: 10
           },
           {
             type: "rating",
             name: `q${idx}_metric3`,
-            title: q.questionText + " (Metric 3)",
+            title: `Metric 3`,
             rateCount: 10
           }
         ]);
