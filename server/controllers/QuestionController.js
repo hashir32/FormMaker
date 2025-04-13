@@ -42,25 +42,35 @@ exports.getRandomQuestions = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 exports.rateQuestion = async (req, res) => {
   const { id } = req.params;
-  const { rating } = req.body;
+  const { rating_1, rating_2, rating_3 } = req.body;
 
-  if (typeof rating !== 'number') {
-    return res.status(400).json({ message: "Rating must be a number." });
+  if (
+    typeof rating_1 !== 'number' ||
+    typeof rating_2 !== 'number' ||
+    typeof rating_3 !== 'number'
+  ) {
+    return res.status(400).json({ message: "All three ratings must be numbers." });
   }
 
   try {
     const question = await Question.findById(id);
     if (!question) return res.status(404).json({ message: "Question not found." });
 
-    question.ratings_metric_one.push(rating);
+    question.ratings_metric_one.push(rating_1);
+    question.ratings_metric_two.push(rating_2);
+    question.ratings_metric_three.push(rating_3);
+
     await question.save();
 
     res.status(200).json({
-      message: "Rating added successfully.",
-      updatedRatings: question.ratings_metric_one
+      message: "Ratings added successfully.",
+      updatedRatings: {
+        ratings_metric_one: question.ratings_metric_one,
+        ratings_metric_two: question.ratings_metric_two,
+        ratings_metric_three: question.ratings_metric_three
+      }
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
