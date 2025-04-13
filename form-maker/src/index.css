@@ -1,0 +1,45 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #e0f7fa; /* Even lighter blue */
+  font-family: 'Arial', sans-serif;
+}
+
+.sv-root, .sv-container-modern {
+  background-color: transparent !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+
+.intro-container {
+  border: 2px solid #003f7f;
+  background-color: #f0f8ff;
+  padding: 0.5rem 3rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+
+.intro-container h3 {
+  margin-bottom: 0.3rem;
+}
+
+.intro-container p {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+}
+
+.intro-container ul {
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+}
