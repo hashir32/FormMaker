@@ -55,7 +55,7 @@ exports.rateQuestion = async (req, res) => {
     const question = await Question.findById(id);
     if (!question) return res.status(404).json({ message: "Question not found." });
 
-    question.ratings.push(rating);
+    question.ratings_metric_one.push(rating);
     await question.save();
 
     res.status(200).json({
