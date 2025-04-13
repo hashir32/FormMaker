@@ -42,3 +42,27 @@ exports.getRandomQuestions = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.rateQuestion = async (req, res) => {
+  const { id } = req.params;
+  const { rating } = req.body;
+
+  if (typeof rating !== 'number') {
+    return res.status(400).json({ message: "Rating must be a number." });
+  }
+
+  try {
+    const question = await Question.findById(id);
+    if (!question) return res.status(404).json({ message: "Question not found." });
+
+    question.ratings.push(rating);
+    await question.save();
+
+    res.status(200).json({
+      message: "Rating added successfully.",
+      updatedRatings: question.ratings
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
