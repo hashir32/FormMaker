@@ -60,7 +60,7 @@ exports.rateQuestion = async (req, res) => {
 
     res.status(200).json({
       message: "Rating added successfully.",
-      updatedRatings: question.ratings
+      updatedRatings: question.ratings_metric_one
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
