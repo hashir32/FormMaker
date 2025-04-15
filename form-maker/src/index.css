@@ -1,18 +1,40 @@
+/* General page styles */
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: #e0f7fa; /* Lighter blue for the whole page */
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-  background-color: #e6f3fa;
+  overflow-x: hidden;
 }
 
-.survey-container {
-  max-width: 900px;
-  margin: 2rem auto;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sv-root, .sv-container-modern {
+  background-color: transparent !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.sv-body {
+  overflow-y: auto !important;
+  height: 100vh;
+  background-color: #e0f7fa; /* Lightish blue background */
+}
+
+.container {
+  width: 100%;
+  height: auto;
   padding: 2rem;
+  margin: 0 auto;
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
 }
 
 .intro-container {
@@ -61,12 +83,41 @@ html, body {
   margin-bottom: 0.5rem !important;
 }
 
+/* Styling for buttons in SurveyJS (survey-react-ui) */
+.sv-btn {
+  background-color: #0277bd !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-weight: bold !important;
+  padding: 0.6rem 1.5rem !important;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sv-btn:hover {
+  background-color: #0288d1 !important; /* Lighter blue on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.sv-btn:active {
+  background-color: #01579b !important; /* Darker blue on click */
+  transform: translateY(2px); /* Button press effect */
+}
+
 .sv-footer__complete-btn {
   background-color: #0277bd !important;
   color: white !important;
   border-radius: 8px !important;
   font-weight: bold !important;
   padding: 0.6rem 1.5rem !important;
+  transition: background-color 0.3s ease;
+}
+
+.sv-footer__complete-btn:hover {
+  background-color: #0288d1 !important; /* Light blue when hovered */
+}
+
+.sv-footer__complete-btn:active {
+  background-color: #01579b !important; /* Darker blue when clicked */
 }
 
 .loading-text {
@@ -75,3 +126,5 @@ html, body {
   color: #003f7f;
   font-size: 1.2rem;
 }
+
+
