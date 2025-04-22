@@ -46,9 +46,12 @@ function SurveyComponent() {
         const questionElements = questions.map((q, idx) => ({
           type: "panel",
           name: `question_${idx}`,
-          title: q.questionText,
-          allowHtml: true,
           elements: [
+            {
+              type: "html", // Use the HTML element type
+              name: `q${idx}_html`, // Unique name for the HTML element
+              html: q.questionText // Directly using questionText with HTML tags
+            },
             {
               type: "rating",
               name: `q${idx}_metric1`,
@@ -69,6 +72,7 @@ function SurveyComponent() {
             }
           ]
         }));
+        
 
         const json = {
           pages: [
