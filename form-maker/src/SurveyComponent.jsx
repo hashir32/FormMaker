@@ -47,6 +47,7 @@ function SurveyComponent() {
           type: "panel",
           name: `question_${idx}`,
           title: q.questionText,
+          allowHtml: true,
           elements: [
             {
               type: "rating",
